@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="StudentStyles.css">
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script type="text/javascript" src="jquery.restfulizer.js"></script>
+
+    <script type="text/javascript">
+			$(document).ready(function() {
+				
+				
+				$(".example3").restfulizer({
+					parse: true,
+					method: "DELETE"
+				});
+				
+				
+			
+			});
+		</script>
+    
+    <title>Employee DataBase</title>
+</head>
+<body>
+    
+    <div class="header">
+        <h1>Welcome To The</h1>
+        <p>Employee DataBase</p>
+      </div>
+
+
+
+      <!--<a href="/Employees/remove/15" data-method="DELETE" class="rest">link</a>
+      <a href="/Employees/remove/15" class="example3" data-method="DELETE">Simple DELETE</a>-->
+
+
+
+  <div id="div1">
+  <form class="form1">
+    <fieldset id="fieldset1">
+        <legend>Remove Student</legend>
+        <label for="EmployeeId">Student ID:</label>
+        <input type="text" id="EmployeeID" name="Id" placeholder="Employee Id...">
+       
+        <button class="SubmitButton" onclick="deleteStudent()" type="submit">Remove Employee</button>
+    </fieldset>
+  </form>
+  </div>
+
+  <script>
+  const formEl1 = document.querySelectorAll('.form1');
+
+  function deleteEmployee(){
+        const formData = new FormData(formEl1);
+       const data = Object.fromEntries(formData);
+   
+    fetch('http://localhost:8087/Students/remove/' + data, {
+      method: 'DELETE',
+    })
+    .then(res => res.text()) // or res.json()
+    .then(res => console.log(res))
+  }
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+<br>
+<br>
+
+<a href="http://localhost:8089/index"><button class="btnAllEmployees" role="button">Return to home page</button></a>
+
+
+
+  </body>
+  </html>
+
+
+  <script>
+  const formEl = document.querySelector('.form1');
+
+    formEl.addEventListener('submit', event => {
+       event.preventDefault();
+
+       const formData = new FormData(formEl);
+       const data = Object.fromEntries(formData);
+
+       fetch('/Employees/remove/', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+       });
+    });
+</script>
+
+    <!-- 
+    <p>
+    <label for="first">First Name</label>
+    <input type="text" name="first" id="first" required>
+    
+    <label for="last">last Name</label>
+    <input type="text" name="last" id="last" required>
+    </p>
+    
+    <p><h3>Select a race</h3></p>
+    
+    <input type="radio" name="race" id="fun" value="Fun">
+    <label for="fun">Fun Run 5k</label>
+
+    <br>
+
+    <input type="radio" name="race" id="half" value="Half">
+    <label for="half">Half Marathon</label>
+    
+    <br>
+
+    <input type="radio" name="race" id="full" value="Full">
+    <label for="full">Full Marathon</label>
+    <br>
+
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" required>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" required>
+    
+    <br>
+
+    <label for="age">Select Age Group</label>
+    <select name="age" id="age">
+    <option value="18-30">18-30</option>
+    <option value="30-50">30-50</option>
+    <option value="50+">50+</option>
+    </select>
+    
+    <br>
+    
+    <button>Register</button>
+    </form>
+
+    -->
+
+
+
+
+
+
+
+
+
+
+
+
